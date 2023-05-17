@@ -1,4 +1,4 @@
-//APS Proposta: I Can Guess The Data Structure
+//APS de Proposta: I Can Guess The Data Structure
 
 #include <stdio.h>
 
