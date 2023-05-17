@@ -1,36 +1,50 @@
 //APS de Proposta: I Can Guess The Data Structure
 
-#include <stdio.h>
+#include <stdio.h> 
 
-int main() {
-    int n;
-    while (scanf("%d", &n) != EOF) {
-        int pilha = 1;
-        int fila = 1;
-        int filapr = 1;
-
-        for (int i = 0; i < n; i++) {
-            int op, x;
-            scanf("%d", &op);
-            if (op == 1) {
-                scanf("%d", &x);
-            } else {
-                scanf("%d", &x);
-                if (pilha) {
-                    if (x != n - i) pilha = 0;
-                }
-                if (fila) {
-                    if (x != i + 1) fila = 0;
-                }
-                if (filapr) {
-                    if (x != n - i) filapr = 0;
-                }
-            }
-        }
-        if (pilha) printf("pilha\n");
-        else if (fila) printf("fila\n");
-        else if (filapr) printf("fila de prioridade\n");
-        else printf("impossivel\n");
-    }
-    return 0;
+int main() 
+{ 
+    int n; 
+    while (scanf("%d", &n) != EOF) { 
+        int x, flag[3] = {1, 1, 1}; 
+        int i; 
+        for (i = 0; i < n; i++) { 
+            scanf("%d", &x); 
+            if (x == 1) { 
+                flag[0] = 0; 
+            } 
+            else { 
+                int y; 
+                scanf("%d", &y); 
+                if (y > x) { 
+                    flag[1] = 0; 
+                } 
+                else { 
+                    flag[2] = 0; 
+                } 
+            } 
+        } 
+        if (flag[0] == 1) { 
+            printf("pilha"); 
+        } 
+        else if (flag[1] == 1) { 
+            printf("fila"); 
+        } 
+        else if (flag[2] == 1) { 
+            printf("fila de prioridade"); 
+        } 
+        else { 
+            int sum = 0; 
+            for (i = 0; i < 3; i++) { 
+                sum += flag[i]; 
+            } 
+            if (sum == 0) { 
+                printf("impossível"); 
+            } 
+            else { 
+                printf("não tenho certeza"); 
+            } 
+        } 
+    } 
+    return 0; 
 }
